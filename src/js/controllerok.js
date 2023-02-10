@@ -1,6 +1,4 @@
 import icons from '../img/icons.svg';
-import * as model from './model.js';
-//import recipeView from './views/RecipeView.js';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -16,13 +14,8 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
-async function controlRecipes(id) {
- await model.loadRecipe(id);
- //const { recipe }= model.state;
- recipeView.renderSpinner();
- recipeView.render(model.state.recipe);
+async function showRecipe(id) {
  
-/*  
   try {
     let id = window.location.hash.slice(1);
     if(!id) return;
@@ -50,7 +43,7 @@ async function controlRecipes(id) {
       ingredients: recipe.ingredients,
     };
     //console.log(recipe);
-*/
+
     var markup = `<figure class="recipe__fig">
 <img src="${recipe.image}" alt="Tomato" class="recipe__img" />
 <h1 class="recipe__title">
@@ -146,13 +139,12 @@ ${recipe.ingredients
 </div>`;
     recipeContainer.innerHTML = '';
     recipeContainer.insertAdjacentHTML('afterbegin', markup);
-    /*
   } catch (err) {
     console.error(err);
   }
-*/
+
 }
-controlRecipes();
+showRecipe();
 
 //---- renderSpinner
 function renderSpinner(parentEI) {
