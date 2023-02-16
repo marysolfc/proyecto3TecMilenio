@@ -16,41 +16,16 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
-async function controlRecipes(id) {
- await model.loadRecipe(id);
- //const { recipe }= model.state;
- recipeView.renderSpinner();
- recipeView.render(model.state.recipe);
- 
-/*  
-  try {
-    let id = window.location.hash.slice(1);
+async function showRecipe() {
+  let id = window.location.hash.slice(1);
     if(!id) return;
     console.log("id1:"+id);
     renderSpinner(recipeContainer);
-    // const resp = await fetch(
-    //   'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
-    // );
-    const resp = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-    );
-    const data = await resp.json();
-     console.log(resp);
-     console.log(data);
-    var recipe = data.data.recipe;
-
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-    //console.log(recipe);
-*/
+ await model.loadRecipe(id);
+ const { recipe }= model.state;
+// recipeView.renderSpinner();
+// recipeView.render(model.state.recipe);
+ 
     var markup = `<figure class="recipe__fig">
 <img src="${recipe.image}" alt="Tomato" class="recipe__img" />
 <h1 class="recipe__title">
@@ -144,17 +119,15 @@ ${recipe.ingredients
   </svg>
 </a>
 </div>`;
+
     recipeContainer.innerHTML = '';
     recipeContainer.insertAdjacentHTML('afterbegin', markup);
-    /*
-  } catch (err) {
-    console.error(err);
-  }
-*/
+
 }
-controlRecipes();
+//showRecipe();
 
 //---- renderSpinner
+
 function renderSpinner(parentEI) {
   let markup = `<div class="spinner">
   <svg>
@@ -167,7 +140,7 @@ function renderSpinner(parentEI) {
 
  //window.addEventListener('hashchange',showRecipe);
  //window.addEventListener('load',showRecipe);
-let eventos = ['hashchange','load'];
- eventos.forEach((ev)=>{
-   addEventListener(ev,showRecipe);
- })
+ let eventos = ['hashchange','load'];
+  eventos.forEach((ev)=>{
+    addEventListener(ev,showRecipe);
+  })
