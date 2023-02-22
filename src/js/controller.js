@@ -1,6 +1,8 @@
 //import icons from '../img/icons.svg';
 import * as model from './model.js';
 import recipeView from './views/RecipeView.js';
+import searchView from './views/SearchView.js';
+import resultsView from './views/ResultView.js';
 
 //const recipeContainer = document.querySelector('.recipe');
 
@@ -27,30 +29,30 @@ async function controlRecipes() {
 
  recipeView.renderSpinner();
  recipeView.render(model.state.recipe);
- await model.loadSearchResults("pizza");
+// await model.loadSearchResults("pizza");
+  //await controlSearchResults("chicken");
   }
   catch (err) {
     
-    //console.error(err);
    recipeView.renderError();
-   
-
   }
-
-    // recipeContainer.innerHTML = '';
-    // recipeContainer.insertAdjacentHTML('afterbegin', markup);
-
 }
-//showRecipe();
+async function controlSearchResults(){
+  try {
+    const query = searchView.getQuery();
+    if(!query) return;
+    await model.loadSearchResults(query);
+    resultsView.renderSpinner();
+    resultsView.render(model.state.search.results);
 
-//---- renderSpinner
-
-
- //window.addEventListener('hashchange',showRecipe);
- //window.addEventListener('load',showRecipe);
- 
+  } catch (error) {
+    recipeView.renderError();
+    throw error;
+  }
+}
 function init(){
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 }
 
 init();
