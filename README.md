@@ -1,3 +1,17 @@
 # proyecto3TecMilenio
-Poner en pr醕tica algunos de los conceptos m醩 utilizados en el desarrollo con JavaScript
-aprendidos en el curso Programaci髇 con JavaScript II.
+Poner en pr锟絚tica algunos de los conceptos m锟絪 utilizados en el desarrollo con JavaScript aprendidos en el curso Programaci锟絥 con JavaScript II.<br>
+
+El proyecto replica la b煤squeda en una API remota de recetas que coinciden con el patr贸n introducido por el usuario, se usa modularizaci贸n con el patr贸n MVC y la paginaci贸n de los resultados. <br>
+
+Se utiliza la herramienta parcel la cual procesa todo el c贸digo de la aplicaci贸n web y recorre todos los archivos enlaz谩ndolos y generando una nueva colecci贸n de archivos m谩s apropiados para el navegador.<br>
+
+En este proyecto se utiliza:
+1. Clases
+2. Modularizaci贸n
+3. AJAX
+4. Consumo de API
+5. Asincron铆a
+6. Promesas
+7. Manejo de eventos y manipulaci贸n del DOM
+
+El proyecto est谩 publicado en [Netlify] (https://proyecto3tecmilenio-forkify-mfc.netlify.app])
