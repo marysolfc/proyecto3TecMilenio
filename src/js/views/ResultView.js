@@ -11,7 +11,7 @@ class ResultView extends View{
     }
     _generateMarkupPreview(result){
         return `<li class="preview">
-        <a class="preview__link" href="${result.id}">
+        <a class="preview__link" href="#${result.id}">
           <figure class="preview__fig">
             <img src="${result.image}" alt="Test" />
           </figure>
@@ -29,4 +29,4 @@ class ResultView extends View{
     }
 }
 
-export default resultView = new ResultView();
+export default new ResultView();
